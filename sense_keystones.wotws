@@ -1,0 +1,20 @@
+#name("Sense (Skills)")
+#description("Detect nearby skills")
+!tags("Sense (Skills)")
+
+!include("sense_core", sense_detect_pickups, sense_tick, sense_pickup_xy, sense_pickup_search, sense_update_closest, sense_debug)
+
+
+!config_boolean(sense_detect_unavailable_keystones, false, "Unavailable locations", "Whether Sense should detect keystones in unavailable locations")
+!config_boolean(sense_keystones, true, "Sense Keystones", "Whether to sense Keystones")
+
+!if sense_keystones {
+    !state(keystone_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_keystone())
+    fun detect_keystone() {
+        sense_pickup_search(keystone_string(), sense_detect_unavailable_keystones)
+        store(keystone_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(keystone_PickupXY))
+    on change player.keystones detect_keystone()
+}

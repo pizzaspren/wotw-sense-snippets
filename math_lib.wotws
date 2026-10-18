@@ -1,0 +1,147 @@
+/// 
+///  Pizza's Math Library
+///  Collection of math functions for the convenience of the snippet developer.
+///
+///  Example:
+///    sin(0.1234)                 // Call sin(x)
+///    ... get_float(math_return)  // Do stuff with the result
+/// 
+///
+///  # Correctness
+///  Most of the non-trivial functions assume that the input variables have a
+///  sensible value in their context. It is up to the calling snippet to make
+///  sure that the input variables do not have invalid values. 
+///
+///  Example:
+///    pow(10, -2)                  // Won't complain
+///    ... get_float(math_return)   // Garbage
+///
+///  The results are "good enough" approximations for non-trivial operations
+///  given that we have limited math support on the snippet language.
+///
+///
+///  # Bug reporting
+///  Don't ;)
+///
+#name("Pizza's MathLib - v1.1.1")
+#description("Convenience math functions")
+
+
+!let(math_return, "math_return")
+!export(math_return)
+
+// Calculates the absolute value of x
+fun math_abs(x: Float) {
+    set_float(math_return, x)
+    if x < 0 set_float(math_return, 0 - x)
+}
+!export(math_abs)
+
+// Calculates the p% value of x
+fun math_percent(x: Float, p: Float) {
+    set_float(math_return, x / 100.0 * p)
+}
+!export(math_percent)
+
+// Calculates base ^ exponent, for exponent >= 0. Can stack overflow
+fun math_pow(base: Float, exponent: Integer) {
+    if exponent == 0 set_float(math_return, 1)
+    if exponent > 0 math_pow_inner(base, base * base, exponent - 1)
+}
+fun math_pow_inner(base: Float, current: Float, iter: Integer) {
+    if iter == 0 set_float(math_return, current)
+    if iter > 0 math_pow_inner(base, current * base, iter - 1)
+}
+!export(math_pow)
+
+// Returns 0 if it's within +-0.001, 1 otherwise.
+fun math_is_approx_zero(x: Float) {
+    math_abs(x)
+    if get_float(math_return) <  0.001 set_float(math_return, 0)
+    if get_float(math_return) >= 0.001 set_float(math_return, 1)
+}
+!export(math_is_approx_zero)
+
+// Calculates base % dividend
+fun math_mod(base: Float, dividend: Float) {
+    math_floor(base / dividend)
+    set_float(math_return, base - (get_float(math_return) * dividend))
+}
+!export(math_mod)
+
+// Returns x rounded down
+fun math_floor(x: Float) {
+    set_float("math_rounded", to_float(to_integer(x)))  // to_integer(...) rounds the value
+    if get_float("math_rounded") <= x set_float(math_return, get_float("math_rounded"))
+    if get_float("math_rounded") > x set_float(math_return, get_float("math_rounded") - 1.0)
+}
+!export(math_floor)
+
+// Returns x rounded up
+fun math_ceil(x: Float) {
+    set_float("math_rounded", to_float(to_integer(x)))  // to_integer(...) rounds the value
+    if get_float("math_rounded") > x set_float(math_return, get_float("math_rounded"))
+    if get_float("math_rounded") <= x set_float(math_return, get_float("math_rounded") + 1.0)
+}
+!export(math_ceil)
+
+// Returns x without decimal places
+fun math_trunc(x: Float) {
+    if x > 0 math_floor(x)
+    if x < 0 math_ceil(x)
+}
+!export(math_trunc)
+
+!let(math_π, 3.141592653589793)
+!let(math_2π, 6.283185307179586)
+!let(math_5π2, 49.34802200544679)
+// Approximates sin(angle) for an angle in radians
+// https://en.wikipedia.org/wiki/Bh%C4%81skara_I%27s_sine_approximation_formula
+fun math_sin(angle: Float) {
+    math_mod(angle, math_2π)                                 // math_return now in range 0..2π  (0..360º)
+    set_float(math_return, get_float(math_return) - math_π)  // math_return now in range -π..π  (-180º..180º)  // This because the approximation only works for angles in the range 0..180º
+    set_boolean("math_sin_temp", get_float(math_return) > 0)                                                   // Will need to correct sign after the approximation for angles >π
+    math_abs(get_float(math_return))                         // math_return now in range 0..π   (0..180º)      // Need to normalize for negative values. This unfortunately has the side effect of making e.g. current 181º is mapped to a hypothetical 1º, which is wrong for sine.
+    set_float(math_return, math_π - get_float(math_return))  // math_return now in range 0..π   (0..180º)      // Correct the side effects of previous step by reversing the values. Current 181º == 179º, which is correct for sine.
+    // Bhaskara I approximation: (16x(π-x)/(5π²-4x(π-x))
+    set_float(math_return, (16 * get_float(math_return) * (math_π - get_float(math_return))) / (math_5π2 - 4 * get_float(math_return) * (math_π - get_float(math_return))))
+    if get_boolean("math_sin_temp") set_float(math_return, 0 - get_float(math_return))  // Restore sign for >π angles
+}
+!export(math_sin)
+
+// Approximates cos(angle) for an angle in radians
+fun math_cos(angle: Float) {
+    math_sin(angle + math_π / 2.0)
+}
+!export(math_cos)
+
+// Approximates tan(angle) for an angle in radians
+fun math_tan(angle: Float) {
+    math_sin(angle)
+    set_float("math_sin", get_float(math_return))
+    
+    math_cos(angle)
+    set_float("math_cos", get_float(math_return))
+
+    set_float(math_return, get_float("math_sin") / get_float("math_cos"))
+}
+!export(math_tan)
+
+// Approximates sqrt(x) for x >= 0
+// https://en.wikipedia.org/wiki/Square_root_algorithms#Heron's_method
+fun math_sqrt(x: Float) {
+    if x == 0 set_float(math_return, 0)
+    if x > 0 {
+        set_float("math_temp_sqrt", x / 2)  // Initial guess
+        set_float("math_temp_sqrt", (get_float("math_temp_sqrt") + x / get_float("math_temp_sqrt")) / 2)
+        set_float("math_temp_sqrt", (get_float("math_temp_sqrt") + x / get_float("math_temp_sqrt")) / 2)
+        set_float(math_return,      (get_float("math_temp_sqrt") + x / get_float("math_temp_sqrt")) / 2)  // Good enough?
+    }
+}
+!export(math_sqrt)
+
+// Calculates the length of a vector with coordinates (x, y)
+fun math_hypot(x: Float, y: Float) {
+    math_sqrt(x*x + y*y)
+}
+!export(math_hypot)

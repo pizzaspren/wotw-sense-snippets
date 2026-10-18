@@ -1,0 +1,260 @@
+#name("Sense (Skills)")
+#description("Detect nearby skills")
+!tags("Sense (Skills)")
+
+!include("sense_core", sense_detect_pickups, sense_tick, sense_pickup_xy, sense_pickup_search, sense_update_closest, sense_debug)
+
+
+!config_boolean(sense_detect_unavailable_skills, false, "Unavailable locations", "Whether Sense should detect skills in unavailable locations")
+!config_boolean(sense_bash, true, "Sense Bash", "Whether to sense Bash")
+!config_boolean(sense_blaze, true, "Sense Blaze", "Whether to sense Blaze")
+!config_boolean(sense_bow, true, "Sense Bow", "Whether to sense Bow")
+!config_boolean(sense_burrow, true, "Sense Burrow", "Whether to sense Burrow")
+!config_boolean(sense_cleanwater, true, "Sense Clean Water", "Whether to sense Clean Water")
+!config_boolean(sense_dash, true, "Sense Dash", "Whether to sense Dash")
+!config_boolean(sense_doublejump, true, "Sense Double Jump", "Whether to sense Double Jump")
+!config_boolean(sense_flap, true, "Sense Flap", "Whether to sense Flap")
+!config_boolean(sense_flash, true, "Sense Flash", "Whether to sense Flash")
+!config_boolean(sense_glide, true, "Sense Glide", "Whether to sense Glide")
+!config_boolean(sense_grapple, true, "Sense Grapple", "Whether to sense Grapple")
+!config_boolean(sense_grenade, true, "Sense Grenade", "Whether to sense Grenade")
+!config_boolean(sense_hammer, true, "Sense Hammer", "Whether to sense Hammer")
+!config_boolean(sense_launch, true, "Sense Launch", "Whether to sense Launch")
+!config_boolean(sense_regenerate, true, "Sense Regenerate", "Whether to sense Regenerate")
+!config_boolean(sense_sentry, true, "Sense Sentry", "Whether to sense Sentry")
+!config_boolean(sense_shuriken, true, "Sense Shuriken", "Whether to sense Shuriken")
+!config_boolean(sense_spear, true, "Sense Spear", "Whether to sense Spear")
+!config_boolean(sense_sword, true, "Sense Sword", "Whether to sense Sword")
+!config_boolean(sense_waterbreath, true, "Sense Water Breath", "Whether to sense Water Breath")
+!config_boolean(sense_waterdash, true, "Sense Water Dash", "Whether to sense Water Dash")
+
+!if sense_bash {
+    !state(bash_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_bash())
+    fun detect_bash() {
+        sense_pickup_search(skill_string(Bash), sense_detect_unavailable_skills)
+        store(bash_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(bash_PickupXY))
+    on skills.bash detect_bash()
+}
+
+!if sense_blaze && sense_debug == false  {
+    !state(blaze_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_blaze())
+    fun detect_blaze() {
+        sense_pickup_search(skill_string(Blaze), sense_detect_unavailable_skills)
+        store(blaze_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(blaze_PickupXY))
+    on skills.blaze detect_blaze()
+}
+
+!if sense_bow && sense_debug == false  {
+    !state(bow_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_bow())
+    fun detect_bow() {
+        sense_pickup_search(skill_string(Bow), sense_detect_unavailable_skills)
+        store(bow_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(bow_PickupXY))
+    on skills.bow detect_bow()
+}
+
+!if sense_burrow && sense_debug == false  {
+    !state(burrow_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_burrow())
+    fun detect_burrow() {
+        sense_pickup_search(skill_string(Burrow), sense_detect_unavailable_skills)
+        store(burrow_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(burrow_PickupXY))
+    on skills.burrow detect_burrow()
+}
+
+!if sense_cleanwater && sense_debug == false  {
+    !state(cleanwater_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_cleanwater())
+    fun detect_cleanwater() {
+        sense_pickup_search(clean_water_string(), sense_detect_unavailable_skills)
+        store(cleanwater_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(cleanwater_PickupXY))
+    on randoState.cleanWater detect_cleanwater()
+}
+
+!if sense_dash && sense_debug == false  {
+    !state(dash_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_dash())
+    fun detect_dash() {
+        sense_pickup_search(skill_string(Dash), sense_detect_unavailable_skills)
+        store(dash_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(dash_PickupXY))
+    on skills.dash detect_dash()
+}
+
+!if sense_doublejump && sense_debug == false  {
+    !state(doublejump_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_doublejump())
+    fun detect_doublejump() {
+        sense_pickup_search(skill_string(DoubleJump), sense_detect_unavailable_skills)
+        store(doublejump_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(doublejump_PickupXY))
+    on skills.doubleJump detect_doublejump()
+}
+
+!if sense_flap && sense_debug == false  {
+    !state(flap_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_flap())
+    fun detect_flap() {
+        sense_pickup_search(skill_string(Flap), sense_detect_unavailable_skills)
+        store(flap_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(flap_PickupXY))
+    on skills.flap detect_flap()
+}
+
+!if sense_flash && sense_debug == false  {
+    !state(flash_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_flash())
+    fun detect_flash() {
+        sense_pickup_search(skill_string(Flash), sense_detect_unavailable_skills)
+        store(flash_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(flash_PickupXY))
+    on skills.flash detect_flash()
+}
+
+!if sense_glide && sense_debug == false  {
+    !state(glide_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_glide())
+    fun detect_glide() {
+        sense_pickup_search(skill_string(Glide), sense_detect_unavailable_skills)
+        store(glide_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(glide_PickupXY))
+    on skills.glide detect_glide()
+}
+
+!if sense_grapple && sense_debug == false  {
+    !state(grapple_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_grapple())
+    fun detect_grapple() {
+        sense_pickup_search(skill_string(Grapple), sense_detect_unavailable_skills)
+        store(grapple_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(grapple_PickupXY))
+    on skills.grapple detect_grapple()
+}
+
+!if sense_grenade && sense_debug == false  {
+    !state(grenade_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_grenade())
+    fun detect_grenade() {
+        sense_pickup_search(skill_string(Grenade), sense_detect_unavailable_skills)
+        store(grenade_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(grenade_PickupXY))
+    on skills.grenade detect_grenade()
+}
+
+!if sense_hammer && sense_debug == false  {
+    !state(hammer_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_hammer())
+    fun detect_hammer() {
+        sense_pickup_search(skill_string(Hammer), sense_detect_unavailable_skills)
+        store(hammer_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(hammer_PickupXY))
+    on skills.hammer detect_hammer()
+}
+
+!if sense_launch && sense_debug == false  {
+    !state(launch_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_launch())
+    fun detect_launch() {
+        sense_pickup_search(skill_string(Launch), sense_detect_unavailable_skills)
+        store(launch_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(launch_PickupXY))
+    on skills.launch detect_launch()
+}
+
+!if sense_regenerate && sense_debug == false  {
+    !state(regenerate_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_regenerate())
+    fun detect_regenerate() {
+        sense_pickup_search(skill_string(Regenerate), sense_detect_unavailable_skills)
+        store(regenerate_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(regenerate_PickupXY))
+    on skills.regenerate detect_regenerate()
+}
+
+!if sense_sentry && sense_debug == false  {
+    !state(sentry_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_sentry())
+    fun detect_sentry() {
+        sense_pickup_search(skill_string(Sentry), sense_detect_unavailable_skills)
+        store(sentry_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(sentry_PickupXY))
+    on skills.sentry detect_sentry()
+}
+
+!if sense_shuriken && sense_debug == false  {
+    !state(shuriken_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_shuriken())
+    fun detect_shuriken() {
+        sense_pickup_search(skill_string(Shuriken), sense_detect_unavailable_skills)
+        store(shuriken_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(shuriken_PickupXY))
+    on skills.shuriken detect_shuriken()
+}
+
+!if sense_spear && sense_debug == false  {
+    !state(spear_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_spear())
+    fun detect_spear() {
+        sense_pickup_search(skill_string(Spear), sense_detect_unavailable_skills)
+        store(spear_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(spear_PickupXY))
+    on skills.spear detect_spear()
+}
+
+!if sense_sword && sense_debug == false  {
+    !state(sword_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_sword())
+    fun detect_sword() {
+        sense_pickup_search(skill_string(Sword), sense_detect_unavailable_skills)
+        store(sword_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(sword_PickupXY))
+    on skills.sword detect_sword()
+}
+
+!if sense_waterbreath && sense_debug == false  {
+    !state(waterbreath_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_waterbreath())
+    fun detect_waterbreath() {
+        sense_pickup_search(skill_string(WaterBreath), sense_detect_unavailable_skills)
+        store(waterbreath_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(waterbreath_PickupXY))
+    on skills.waterBreath detect_waterbreath()
+}
+
+!if sense_waterdash && sense_debug == false  {
+    !state(waterdash_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_waterdash())
+    fun detect_waterdash() {
+        sense_pickup_search(skill_string(WaterDash), sense_detect_unavailable_skills)
+        store(waterdash_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(waterdash_PickupXY))
+    on skills.waterDash detect_waterdash()
+}

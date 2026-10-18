@@ -1,6 +1,6 @@
-#name("Sense (Skills)")
-#description("Detect nearby skills")
-!tags("Sense (Skills)")
+#name("Sense (Keystones)")
+#description("Detect nearby keystones")
+!tags("Sense (Keystones)")
 
 !include("sense_core", sense_detect_pickups, sense_tick, sense_pickup_xy, sense_pickup_search, sense_update_closest, sense_debug)
 

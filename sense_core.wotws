@@ -86,7 +86,7 @@ fun sense_split_pickup_position(pickup_xy: Integer) {
 // ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣼⣀⣠⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 // ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 
-// Search and replace on loc_data.csv
+// Search and replace on pickups.csv
 // 1:
 // s:  ^(Marsh|Burrows|Hollow|Glades|Wellspring|Pools|Woods|Depths|Wastes|Ruins|Willow|Reach)\.([a-zA-Z]*)\.?([a-zA-Z]*).*
 // r: !item_on($1_$2_$3_item, $1.$2.$3)
@@ -468,9 +468,9 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     set_float("sense_search_closest_dist", sense_longest_distance)
     // TODO: Shops?
 
-    // Search and replace on loc_data.csv
+    // Search and replace on pickups.csv
     // 1:
-    // s:  ^(Marsh|Burrows|Hollow|Glades|Wellspring|Pools|Woods|Depths|Wastes|Ruins|Willow|Reach)\.([a-zA-Z]*)\.?([a-zA-Z]*),(?:[^,]*,){6}\s(-?\d+)(?:\.\d+)?,\s-(\d+)
+    // s:  ^(Marsh|Burrows|Hollow|Glades|Wellspring|Pools|Woods|Depths|Wastes|Ruins|Willow|Reach)\.([a-zA-Z]*)\.?([a-zA-Z]*),(?:[^,]*,){4}\s(-?\d+)(?:\.\d+)?,\s-(\d+)
     // r: if (detect_unavailable || $1.$2.$3 == false) && pickup_text == $1_$2_$3_item sense_pickup_search_closest($4$5)
     // 2: Work around mix of 3-part and 2-part names
     // s: _{2}item
@@ -864,7 +864,7 @@ fun sense_pickup_search_closest(candidate_xy: Integer){
 
 
 !if sense_debug {
-    !remove_location(Marsh.Spawn.LeftHF)
+    !no_random_placement(Marsh.Spawn.LeftHF)
     on Marsh.Spawn.LeftHF skill(Bash)
 
     !let(sense_message_debug, "sense_message_debug")

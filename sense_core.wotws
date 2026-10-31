@@ -3,12 +3,16 @@
 
 !include("math_lib", math_hypot, math_abs, math_mod, math_trunc, math_return)
 
-!config_float(sense_distance, 400.0, "Sense distance", "How far away Sense should detect things")
+!config_float_range(sense_distance, 400.0, 1.0, 9999.0, "Sense distance", "How far away Sense should start detecting things")
+!config_float_range(sense_timer_delay, 5.0, 0.1, 600.0, "Re-scan delay (seconds)", "Time between full map re-scans for better accuracy when multiple pickups are nearby")
 !config_boolean(sense_debug, false, "Debug", "Debug purposes")
 !export(sense_debug)
 
+!timer(sense_timer_enabled, sense_timer)
+!export(sense_timer_enabled)
+
 !let(sense_shortest_distance, "sense_shortest_distance")
-!let(sense_longest_distance, 10000)  // Surely that's enough
+!let(sense_longest_distance, 10000.0)  // Surely that's enough
 !let(sense_pickup_x, "sense_pickup_x")
 !let(sense_pickup_y, "sense_pickup_y")
 !let(sense_pickup_xy, "sense_pickup_xy")
@@ -20,19 +24,21 @@
 on spawn {
     free_message(sense_message, "Sense: Nothing")
     set_message_corner(sense_message, BottomLeft)
+    store(sense_timer_enabled, true)  // TODO: A way to turn this off ingame?
+    sense_detect_pickups()  // First one is free
 }
-on reload {   // player.positionXY during "on spawn" is on a prologue cutscene. So we run the search when Ori reaches the normal map instead.
-    position_trigger_rectangle("sense_spawn_search", -2100, -4700, 2500, -3300)
-    position_trigger_enter_callback("sense_spawn_search", sense_detect_pickups())
+on sense_timer > sense_timer_delay if is_in_rectangle(-2100, -4700, 2500, -3300) {
+    sense_detect_pickups()
+    store(sense_timer, 0)
 }
-on change statsUberStateGroup.distanceTravelledStatSettingSerializedFloatUberState sense_detect_pickups()  // Re-scan whenever Ori reaches a checkpoint for better accuracy.
+
 on tick {
     sense_tick()
-    if get_float(sense_shortest_distance) > sense_distance         set_message_text(sense_message, "Sense: Nothing")
-    if get_float(sense_shortest_distance) / sense_distance <=1     set_message_text(sense_message, "Sense: *Far*")
-    if get_float(sense_shortest_distance) / sense_distance < 0.5   set_message_text(sense_message, "Sense: $Nearby$")
-    if get_float(sense_shortest_distance) / sense_distance < 0.25  set_message_text(sense_message, "Sense: #Close#")
-    if get_float(sense_shortest_distance) / sense_distance < 0.125 set_message_text(sense_message, "Sense: @Very close@")
+    if get_float(sense_shortest_distance) > sense_distance        set_message_text(sense_message, "Sense: Nothing")
+    if get_float(sense_shortest_distance) / sense_distance <=1    set_message_text(sense_message, "Sense: *Far*")
+    if get_float(sense_shortest_distance) / sense_distance < 0.5  set_message_text(sense_message, "Sense: $Nearby$")
+    if get_float(sense_shortest_distance) / sense_distance < 0.3  set_message_text(sense_message, "Sense: #Close#")
+    if get_float(sense_shortest_distance) / sense_distance < 0.1  set_message_text(sense_message, "Sense: @Very close@")
 }
 
 fun sense_detect_pickups(){
@@ -88,8 +94,8 @@ fun sense_split_pickup_position(pickup_xy: Integer) {
 
 // Search and replace on pickups.csv
 // 1:
-// s: ^(Marsh|Burrows|Hollow|Glades|Wellspring|Pools|Woods|Depths|Wastes|Ruins|Willow|Reach)\.([a-zA-Z]*)\.?([a-zA-Z]*).*
-// r:     !item_on($1_$2_$3_item, $1.$2.$3)
+// s: ^(Marsh|Burrows|Hollow|Glades|Wellspring|Pools|Woods|Depths|Wastes|Ruins|Willow|Reach|Shop)\.([a-zA-Z]*)\.?([a-zA-Z\d]*).*
+// r: !item_on($1_$2_$3_item, $1.$2.$3)
 // 2: Work around mix of 3-part and 2-part names
 // s: (?:[_\.])([_\|)])
 // r: $1
@@ -460,17 +466,39 @@ fun sense_split_pickup_position(pickup_xy: Integer) {
 !item_on(Willow_RedirectHeart_SL_item, Willow.RedirectHeart.SL)
 !item_on(Willow_TopHeart_LeftSL_item, Willow.TopHeart.LeftSL)
 !item_on(Willow_TopHeart_RightSL_item, Willow.TopHeart.RightSL)
+!item_on(Shop_Twillen_Slot1_item, Shop.Twillen.Slot1)
+!item_on(Shop_Twillen_Slot2_item, Shop.Twillen.Slot2)
+!item_on(Shop_Twillen_Slot3_item, Shop.Twillen.Slot3)
+!item_on(Shop_Twillen_Slot4_item, Shop.Twillen.Slot4)
+!item_on(Shop_Twillen_Slot5_item, Shop.Twillen.Slot5)
+!item_on(Shop_Twillen_Slot6_item, Shop.Twillen.Slot6)
+!item_on(Shop_Twillen_Slot7_item, Shop.Twillen.Slot7)
+!item_on(Shop_Twillen_Slot8_item, Shop.Twillen.Slot8)
+!item_on(Shop_Opher_Slot1_item, Shop.Opher.Slot1)
+!item_on(Shop_Opher_Slot2_item, Shop.Opher.Slot2)
+!item_on(Shop_Opher_Slot3_item, Shop.Opher.Slot3)
+!item_on(Shop_Opher_Slot4_item, Shop.Opher.Slot4)
+!item_on(Shop_Opher_Slot5_item, Shop.Opher.Slot5)
+!item_on(Shop_Opher_Slot6_item, Shop.Opher.Slot6)
+!item_on(Shop_Opher_Slot7_item, Shop.Opher.Slot7)
+!item_on(Shop_Opher_Slot8_item, Shop.Opher.Slot8)
+!item_on(Shop_Opher_Slot9_item, Shop.Opher.Slot9)
+!item_on(Shop_Opher_Slot10_item, Shop.Opher.Slot10)
+!item_on(Shop_Opher_Slot11_item, Shop.Opher.Slot11)
+!item_on(Shop_Opher_Slot12_item, Shop.Opher.Slot12)
+!item_on(Shop_Lupo_Slot1_item, Shop.Lupo.Slot1)
+!item_on(Shop_Lupo_Slot2_item, Shop.Lupo.Slot2)
+!item_on(Shop_Lupo_Slot3_item, Shop.Lupo.Slot3)
+
 
 // Finds the closest pickup matching the name within `pickup_text`.
 // If `detect_unavailable`, it will also scan already-picked-up locations
 fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     set_integer("sense_search_closest_xy", 0)
     set_float("sense_search_closest_dist", sense_longest_distance)
-    // TODO: Shops?
-
     // Search and replace on pickups.csv
     // 1:
-    // s: ^(Marsh|Burrows|Hollow|Glades|Wellspring|Pools|Woods|Depths|Wastes|Ruins|Willow|Reach)\.([a-zA-Z]*)\.?([a-zA-Z]*),(?:[^,]*,){4}\s(-?\d+)(?:\.\d+)?,\s-(\d+).*$
+    // s: ^(Marsh|Burrows|Hollow|Glades|Wellspring|Pools|Woods|Depths|Wastes|Ruins|Willow|Reach|Shop)\.([a-zA-Z]*)\.?([a-zA-Z]*),(?:[^,]*,){4}\s(-?\d+)(?:\.\d+)?,\s-(\d+).*$
     // r:     if (detect_unavailable || $1.$2.$3 == false) && pickup_text == $1_$2_$3_item sense_pickup_search_closest($4$5)
     // 2: Work around mix of 3-part and 2-part names
     // s: _{2}item
@@ -845,6 +873,35 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Willow.RedirectHeart.SL == false) && pickup_text == Willow_RedirectHeart_SL_item sense_pickup_search_closest(6533780)
     if (detect_unavailable || Willow.TopHeart.LeftSL == false) && pickup_text == Willow_TopHeart_LeftSL_item sense_pickup_search_closest(4333639)
     if (detect_unavailable || Willow.TopHeart.RightSL == false) && pickup_text == Willow_TopHeart_RightSL_item sense_pickup_search_closest(5403655)
+    // ^(Shop)\.(Twillen)\.(Slot\d+).*$
+    //     if (detect_unavailable || $1.$2.$3 == false) && pickup_text == $1_$2_$3_item sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot1 == false) && pickup_text == Shop_Twillen_Slot1_item sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot2 == false) && pickup_text == Shop_Twillen_Slot2_item sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot3 == false) && pickup_text == Shop_Twillen_Slot3_item sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot4 == false) && pickup_text == Shop_Twillen_Slot4_item sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot5 == false) && pickup_text == Shop_Twillen_Slot5_item sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot6 == false) && pickup_text == Shop_Twillen_Slot6_item sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot7 == false) && pickup_text == Shop_Twillen_Slot7_item sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot8 == false) && pickup_text == Shop_Twillen_Slot8_item sense_pickup_search_twillen()
+    // ^(Shop)\.(Opher)\.(Slot\d+).*$
+    //     if (detect_unavailable || $1.$2.$3 == false) && pickup_text == $1_$2_$3_item sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot1 == false) && pickup_text == Shop_Opher_Slot1_item sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot2 == false) && pickup_text == Shop_Opher_Slot2_item sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot3 == false) && pickup_text == Shop_Opher_Slot3_item sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot4 == false) && pickup_text == Shop_Opher_Slot4_item sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot5 == false) && pickup_text == Shop_Opher_Slot5_item sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot6 == false) && pickup_text == Shop_Opher_Slot6_item sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot7 == false) && pickup_text == Shop_Opher_Slot7_item sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot8 == false) && pickup_text == Shop_Opher_Slot8_item sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot9 == false) && pickup_text == Shop_Opher_Slot9_item sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot10 == false) && pickup_text == Shop_Opher_Slot10_item sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot11 == false) && pickup_text == Shop_Opher_Slot11_item sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot12 == false) && pickup_text == Shop_Opher_Slot12_item sense_pickup_search_opher()
+    // ^(Shop)\.(Lupo)\.(Slot\d+).*$
+    //     if (detect_unavailable || $1.$2.$3 == false) && pickup_text == $1_$2_$3_item sense_pickup_search_closest(-1734508)
+    if (detect_unavailable || Shop.Lupo.Slot1 == false) && pickup_text == Shop_Lupo_Slot1_item sense_pickup_search_closest(-1734508)
+    if (detect_unavailable || Shop.Lupo.Slot2 == false) && pickup_text == Shop_Lupo_Slot2_item sense_pickup_search_closest(-1734508)
+    if (detect_unavailable || Shop.Lupo.Slot3 == false) && pickup_text == Shop_Lupo_Slot3_item sense_pickup_search_closest(-1734508)
 
     set_integer(sense_pickup_xy, get_integer("sense_search_closest_xy"))
 }
@@ -862,6 +919,16 @@ fun sense_pickup_search_closest(candidate_xy: Integer){
     }
 }
 
+fun sense_pickup_search_twillen(){
+    sense_pickup_search_closest(-2814238)
+    sense_pickup_search_closest(-4104161)
+}
+fun sense_pickup_search_opher(){
+    sense_pickup_search_closest(-2034147)
+    sense_pickup_search_closest(-5974292)
+    sense_pickup_search_closest(-12593677)
+}
+
 
 !if sense_debug {
     !no_random_placement(Marsh.Spawn.LeftHF)
@@ -873,22 +940,24 @@ fun sense_pickup_search_closest(candidate_xy: Integer){
         set_message_corner(sense_message_debug, TopLeft)
     }
 
-    !augment_fun(sense_tick(), {
-        set_message_text(sense_message_debug, "@Sense Debug@" + "\nplayer.positionX: " + player.positionX + "\nplayer.positionY: " + player.positionY)
+    !augment_fun(sense_update_closest(candidate_xy: Integer), {
+        set_message_text(sense_message_debug, "@Sense Debug@" + "\nplayer.positionX: " + player.positionX + "\nplayer.positionY: " + player.positionY + "\nsense_shortest_distance: " + get_float(sense_shortest_distance))
     })
     !augment_fun(sense_pickup_search_closest(candidate_xy: Integer), {
         if candidate_xy != 0 {
             sense_split_pickup_position(candidate_xy)
             math_hypot(get_float(sense_pickup_x) - player.positionX, get_float(sense_pickup_y) - player.positionY)
-            item_message("@Sense debug@ - $sense_pickup_search_closest$" +
-                        "\nx: " + to_string(get_float(sense_pickup_x)) +
-                        "\ny: " + to_string(get_float(sense_pickup_y)) +
-                        "\nplayer.positionX: " + player.positionX +
-                        "\nplayer.positionY: " + player.positionY +
-                        "\ndx: " + to_string(get_float(sense_pickup_x) - player.positionX) +
-                        "\ndy: " + to_string(get_float(sense_pickup_y) - player.positionY) +
-                        "\nhypot: " + get_float(math_return) +
-                        "\nclosest: " + to_string(get_float("sense_search_closest_dist")))
+            if get_float(math_return) > get_float("sense_search_closest_dist") {
+                item_message("@Sense debug@ - $sense_pickup_search_closest$" +
+                            "\nx: " + to_string(get_float(sense_pickup_x)) +
+                            "\ny: " + to_string(get_float(sense_pickup_y)) +
+                            "\nplayer.positionX: " + player.positionX +
+                            "\nplayer.positionY: " + player.positionY +
+                            "\ndx: " + to_string(get_float(sense_pickup_x) - player.positionX) +
+                            "\ndy: " + to_string(get_float(sense_pickup_y) - player.positionY) +
+                            "\nhypot: " + get_float(math_return) +
+                            "\nclosest: " + to_string(get_float("sense_search_closest_dist")))
+            }
             if get_float(math_return) < get_float("sense_search_closest_dist") {
                 item_message("@Sense debug@ - $sense_pickup_search_closest$" +
                             "\nmath_return < sense_search_closest_dist (" + get_float(math_return) + " < " + get_float("sense_search_closest_dist") + ")")

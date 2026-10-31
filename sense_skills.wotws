@@ -80,7 +80,7 @@
         store(cleanwater_PickupXY, get_integer(sense_pickup_xy))
     }
     !augment_fun(sense_tick(), sense_update_closest(cleanwater_PickupXY))
-    on randoState.cleanWater detect_cleanwater()
+    on worldEvents.cleanWater detect_cleanwater()
 }
 
 !if sense_dash && sense_debug == false  {

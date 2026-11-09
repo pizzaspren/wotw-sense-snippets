@@ -1,0 +1,68 @@
+#name("Sense (Resources)")
+#description("Detect nearby resources")
+!tags("Sense (Resources)")
+
+!include("sense_core", sense_detect_pickups, sense_tick, sense_pickup_xy, sense_pickup_search, sense_update_closest)
+
+
+!config_boolean(sense_detect_unavailable_resources, false, "Unavailable locations", "Whether Sense should detect resources in unavailable locations")
+!config_boolean(sense_keystones, true, "Sense Keystones", "Whether to sense Keystones")
+!config_boolean(sense_gorlek_ores, true, "Sense Gorlek Ores", "Whether to sense Gorlek Ores")
+!config_boolean(sense_shard_slots, true, "Sense Shard Slots", "Whether to sense Shard Slots")
+!config_boolean(sense_lf, true, "Sense Life Fragments", "Whether to sense Life Fragments")
+!config_boolean(sense_ef, true, "Sense Energy Fragments", "Whether to sense Energy Fragments")
+
+!if sense_keystones {
+    !state(keystone_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_keystone())
+    fun detect_keystone() {
+        sense_pickup_search(keystone_string(), sense_detect_unavailable_resources)
+        store(keystone_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(keystone_PickupXY))
+    on change player.keystones detect_keystone()  // This also detects spending keystones on doors
+}
+
+!if sense_gorlek_ores {
+    !state(ore_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_gorlek_ores())
+    fun detect_gorlek_ores() {
+        sense_pickup_search(gorlek_ore_string(), sense_detect_unavailable_resources)
+        store(ore_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(ore_PickupXY))
+    on change player.gorlekOre detect_gorlek_ores()  // This also detects spending gorlek ore at Grom
+}
+
+!if sense_shard_slots {
+    !state(shard_slot_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_shard_slots())
+    fun detect_shard_slots() {
+        sense_pickup_search(shard_slot_string(), sense_detect_unavailable_resources)
+        store(shard_slot_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(shard_slot_PickupXY))
+    on change player.shardSlots detect_shard_slots()
+}
+
+!if sense_lf {
+    !state(lc_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_life_fragments())
+    fun detect_life_fragments() {
+        sense_pickup_search(life_fragment_string(), sense_detect_unavailable_resources)
+        store(lc_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(lc_PickupXY))
+    on change player.maxLife detect_life_fragments()
+}
+
+!if sense_ef {
+    !state(ec_PickupXY, Integer)
+    !augment_fun(sense_detect_pickups(), detect_energy_fragments())
+    fun detect_energy_fragments() {
+        sense_pickup_search(energy_fragment_string(), sense_detect_unavailable_resources)
+        store(ec_PickupXY, get_integer(sense_pickup_xy))
+    }
+    !augment_fun(sense_tick(), sense_update_closest(ec_PickupXY))
+    on change player.maxEnergy detect_energy_fragments()
+}

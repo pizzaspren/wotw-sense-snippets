@@ -517,7 +517,6 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Marsh.CollapsingLog.SwimOre == false) && string_contains(pickup_text, Marsh_CollapsingLog_SwimOre_item) sense_pickup_search_closest(-8104334)
     if (detect_unavailable || Marsh.CollapsingLog.BashEF == false) && string_contains(pickup_text, Marsh_CollapsingLog_BashEF_item) sense_pickup_search_closest(-6674329)
     if (detect_unavailable || Marsh.CollapsingLog.LupoSL == false) && string_contains(pickup_text, Marsh_CollapsingLog_LupoSL_item) sense_pickup_search_closest(-6564342)
-    if (detect_unavailable || Marsh.LupoMap == false) && string_contains(pickup_text, Marsh_LupoMap_item) sense_pickup_search_closest(-5894348)
     if (detect_unavailable || Marsh.HowlDoor.LeverEF == false) && string_contains(pickup_text, Marsh_HowlDoor_LeverEF_item) sense_pickup_search_closest(-6254418)
     if (detect_unavailable || Marsh.TokkCave.SlimeSL == false) && string_contains(pickup_text, Marsh_TokkCave_SlimeSL_item) sense_pickup_search_closest(-7554422)
     if (detect_unavailable || Marsh.TokkCave.LizardSL == false) && string_contains(pickup_text, Marsh_TokkCave_LizardSL_item) sense_pickup_search_closest(-7834452)
@@ -528,9 +527,7 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Marsh.Sand.ArenaShard == false) && string_contains(pickup_text, Marsh_Sand_ArenaShard_item) sense_pickup_search_closest(-9164398)
     if (detect_unavailable || Marsh.BellsApproach.LedgeSL == false) && string_contains(pickup_text, Marsh_BellsApproach_LedgeSL_item) sense_pickup_search_closest(-10024450)
     if (detect_unavailable || Marsh.Bells.CrusherSwimSL == false) && string_contains(pickup_text, Marsh_Bells_CrusherSwimSL_item) sense_pickup_search_closest(-9794509)
-    if (detect_unavailable || Marsh.AncestralLightTree == false) && string_contains(pickup_text, Marsh_AncestralLightTree_item) sense_pickup_search_closest(-8404488)
     if (detect_unavailable || Marsh.IntoBurrows.Completed == false) && string_contains(pickup_text, Marsh_IntoBurrows_Completed_item) sense_pickup_search_closest(-9324494)
-    if (detect_unavailable || Marsh.RegenerateTree == false) && string_contains(pickup_text, Marsh_RegenerateTree_item) sense_pickup_search_closest(-5394406)
     if (detect_unavailable || Marsh.Howl.Shard == false) && string_contains(pickup_text, Marsh_Howl_Shard_item) sense_pickup_search_closest(-4994411)
     if (detect_unavailable || Marsh.Howl.DenEntranceSL == false) && string_contains(pickup_text, Marsh_Howl_DenEntranceSL_item) sense_pickup_search_closest(-4344419)
     if (detect_unavailable || Marsh.Howl.FangEF == false) && string_contains(pickup_text, Marsh_Howl_FangEF_item) sense_pickup_search_closest(-2334384)
@@ -540,13 +537,11 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Marsh.DenDoorLoop.SecretLF == false) && string_contains(pickup_text, Marsh_DenDoorLoop_SecretLF_item) sense_pickup_search_closest(-5694454)
     if (detect_unavailable || Marsh.Den.AboveDoorKS == false) && string_contains(pickup_text, Marsh_Den_AboveDoorKS_item) sense_pickup_search_closest(-4394461)
     if (detect_unavailable || Marsh.Den.BoneOre == false) && string_contains(pickup_text, Marsh_Den_BoneOre_item) sense_pickup_search_closest(-4324503)
-    if (detect_unavailable || Marsh.SwordTree == false) && string_contains(pickup_text, Marsh_SwordTree_item) sense_pickup_search_closest(-2964483)
     if (detect_unavailable || Marsh.SwordTree.Shard == false) && string_contains(pickup_text, Marsh_SwordTree_Shard_item) sense_pickup_search_closest(-2394440)
     if (detect_unavailable || Marsh.Den.AboveTPSL == false) && string_contains(pickup_text, Marsh_Den_AboveTPSL_item) sense_pickup_search_closest(-3884502)
     if (detect_unavailable || Marsh.Den.CombatShrine == false) && string_contains(pickup_text, Marsh_Den_CombatShrine_item) sense_pickup_search_closest(-3284565)
     if (detect_unavailable || Marsh.Den.LaserKS == false) && string_contains(pickup_text, Marsh_Den_LaserKS_item) sense_pickup_search_closest(-3994567)
     if (detect_unavailable || Marsh.DoubleJumpTree.SL == false) && string_contains(pickup_text, Marsh_DoubleJumpTree_SL_item) sense_pickup_search_closest(-5074536)
-    if (detect_unavailable || Marsh.DoubleJumpTree == false) && string_contains(pickup_text, Marsh_DoubleJumpTree_item) sense_pickup_search_closest(-5554551)
     if (detect_unavailable || Marsh.DoubleJumpTree.Shard == false) && string_contains(pickup_text, Marsh_DoubleJumpTree_Shard_item) sense_pickup_search_closest(-5474529)
     if (detect_unavailable || Marsh.Trial.LeftSL == false) && string_contains(pickup_text, Marsh_Trial_LeftSL_item) sense_pickup_search_closest(-5274354)
     if (detect_unavailable || Marsh.Trial.Ore == false) && string_contains(pickup_text, Marsh_Trial_Ore_item) sense_pickup_search_closest(-5014340)
@@ -559,11 +554,9 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Marsh.OpherRoom.CeilingSL == false) && string_contains(pickup_text, Marsh_OpherRoom_CeilingSL_item) sense_pickup_search_closest(-6414223)
     if (detect_unavailable || Marsh.UpperPoolsPath.EF == false) && string_contains(pickup_text, Marsh_UpperPoolsPath_EF_item) sense_pickup_search_closest(-6624186)
     if (detect_unavailable || Marsh.UpperPoolsPath.SL == false) && string_contains(pickup_text, Marsh_UpperPoolsPath_SL_item) sense_pickup_search_closest(-8024186)
-    if (detect_unavailable || Marsh.BowTree == false) && string_contains(pickup_text, Marsh_BowTree_item) sense_pickup_search_closest(-4574267)
     if (detect_unavailable || Marsh.BowTree.EF == false) && string_contains(pickup_text, Marsh_BowTree_EF_item) sense_pickup_search_closest(-4214272)
     if (detect_unavailable || Marsh.LeftEyestone == false) && string_contains(pickup_text, Marsh_LeftEyestone_item) sense_pickup_search_closest(-4614195)
     if (detect_unavailable || Marsh.RightEyestone == false) && string_contains(pickup_text, Marsh_RightEyestone_item) sense_pickup_search_closest(-3944188)
-    if (detect_unavailable || Burrows.LupoMap == false) && string_contains(pickup_text, Burrows_LupoMap_item) sense_pickup_search_closest(-8704555)
     if (detect_unavailable || Burrows.SpikesKS == false) && string_contains(pickup_text, Burrows_SpikesKS_item) sense_pickup_search_closest(-7994579)
     if (detect_unavailable || Burrows.LeverKS == false) && string_contains(pickup_text, Burrows_LeverKS_item) sense_pickup_search_closest(-7034607)
     if (detect_unavailable || Burrows.PortalTunnelKS == false) && string_contains(pickup_text, Burrows_PortalTunnelKS_item) sense_pickup_search_closest(-7254520)
@@ -576,11 +569,9 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Hollow.Drain.BreakWallEF == false) && string_contains(pickup_text, Hollow_Drain_BreakWallEF_item) sense_pickup_search_closest(-2384301)
     if (detect_unavailable || Hollow.Drain.CrushersShard == false) && string_contains(pickup_text, Hollow_Drain_CrushersShard_item) sense_pickup_search_closest(-3114325)
     if (detect_unavailable || Hollow.SwimEF == false) && string_contains(pickup_text, Hollow_SwimEF_item) sense_pickup_search_closest(-1774354)
-    if (detect_unavailable || Hollow.LupoMap == false) && string_contains(pickup_text, Hollow_LupoMap_item) sense_pickup_search_closest(-1464321)
     if (detect_unavailable || Hollow.SpiritTrial.Completed == false) && string_contains(pickup_text, Hollow_SpiritTrial_Completed_item) sense_pickup_search_closest(-1154259)
     if (detect_unavailable || Hollow.Trial.LF == false) && string_contains(pickup_text, Hollow_Trial_LF_item) sense_pickup_search_closest(-1224268)
     if (detect_unavailable || Hollow.Trial.FallingSlugSL == false) && string_contains(pickup_text, Hollow_Trial_FallingSlugSL_item) sense_pickup_search_closest(-824369)
-    if (detect_unavailable || Hollow.DashTree == false) && string_contains(pickup_text, Hollow_DashTree_item) sense_pickup_search_closest(-694453)
     if (detect_unavailable || Hollow.DashTree.CrusherSL == false) && string_contains(pickup_text, Hollow_DashTree_CrusherSL_item) sense_pickup_search_closest(-374452)
     if (detect_unavailable || Hollow.DashTree.VineSL == false) && string_contains(pickup_text, Hollow_DashTree_VineSL_item) sense_pickup_search_closest(114401)
     if (detect_unavailable || Hollow.DashTree.AboveDoorSL == false) && string_contains(pickup_text, Hollow_DashTree_AboveDoorSL_item) sense_pickup_search_closest(-1004407)
@@ -589,7 +580,6 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Hollow.Hornbug.CeilingSL == false) && string_contains(pickup_text, Hollow_Hornbug_CeilingSL_item) sense_pickup_search_closest(-864210)
     if (detect_unavailable || Hollow.Hornbug.LanternsSL == false) && string_contains(pickup_text, Hollow_Hornbug_LanternsSL_item) sense_pickup_search_closest(-554200)
     if (detect_unavailable || Hollow.BashTreeApproach.EF == false) && string_contains(pickup_text, Hollow_BashTreeApproach_EF_item) sense_pickup_search_closest(464236)
-    if (detect_unavailable || Hollow.BashTree == false) && string_contains(pickup_text, Hollow_BashTree_item) sense_pickup_search_closest(-204326)
     if (detect_unavailable || Hollow.BashTree.SL == false) && string_contains(pickup_text, Hollow_BashTree_SL_item) sense_pickup_search_closest(-314302)
     if (detect_unavailable || Hollow.OutsideDepths.MortarLF == false) && string_contains(pickup_text, Hollow_OutsideDepths_MortarLF_item) sense_pickup_search_closest(844263)
     if (detect_unavailable || Hollow.OutsideDepths.Shard == false) && string_contains(pickup_text, Hollow_OutsideDepths_Shard_item) sense_pickup_search_closest(2164307)
@@ -620,7 +610,6 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Glades.OutsideCave.SandSL == false) && string_contains(pickup_text, Glades_OutsideCave_SandSL_item) sense_pickup_search_closest(-3074166)
     if (detect_unavailable || Glades.IntoDarkness.Acorn == false) && string_contains(pickup_text, Glades_IntoDarkness_Acorn_item) sense_pickup_search_closest(-104549)
     if (detect_unavailable || Glades.IntoDarkness.Completed == false) && string_contains(pickup_text, Glades_IntoDarkness_Completed_item) sense_pickup_search_closest(-3584185)
-    if (detect_unavailable || Glades.AncestralLightTree == false) && string_contains(pickup_text, Glades_AncestralLightTree_item) sense_pickup_search_closest(-3684158)
     if (detect_unavailable || Glades.FamilyReunion.Key == false) && string_contains(pickup_text, Glades_FamilyReunion_Key_item) sense_pickup_search_closest(-3854161)
     if (detect_unavailable || Glades.FatherMokiHut.SL == false) && string_contains(pickup_text, Glades_FatherMokiHut_SL_item) sense_pickup_search_closest(-1194558)
     if (detect_unavailable || Glades.RoughDiamondShard == false) && string_contains(pickup_text, Glades_RoughDiamondShard_item) sense_pickup_search_closest(-4084162)
@@ -667,8 +656,6 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Wellspring.DrainClimb.PullPoleOre == false) && string_contains(pickup_text, Wellspring_DrainClimb_PullPoleOre_item) sense_pickup_search_closest(-10773936)
     if (detect_unavailable || Wellspring.DrainClimb.LeverEF == false) && string_contains(pickup_text, Wellspring_DrainClimb_LeverEF_item) sense_pickup_search_closest(-11093864)
     if (detect_unavailable || Wellspring.DrainClimb.LeverLeftSL == false) && string_contains(pickup_text, Wellspring_DrainClimb_LeverLeftSL_item) sense_pickup_search_closest(-11423861)
-    if (detect_unavailable || Wellspring.LupoMap == false) && string_contains(pickup_text, Wellspring_LupoMap_item) sense_pickup_search_closest(-11903861)
-    if (detect_unavailable || Wellspring.GrappleTree == false) && string_contains(pickup_text, Wellspring_GrappleTree_item) sense_pickup_search_closest(-13093905)
     if (detect_unavailable || Wellspring.GrappleTree.SL == false) && string_contains(pickup_text, Wellspring_GrappleTree_SL_item) sense_pickup_search_closest(-13073884)
     if (detect_unavailable || Wellspring.HandToHand.Herbs == false) && string_contains(pickup_text, Wellspring_HandToHand_Herbs_item) sense_pickup_search_closest(-11683733)
     if (detect_unavailable || Wellspring.SecondFloor.EntranceLeftSL == false) && string_contains(pickup_text, Wellspring_SecondFloor_EntranceLeftSL_item) sense_pickup_search_closest(-12363739)
@@ -712,7 +699,6 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Woods.FeedingGrounds.SL == false) && string_contains(pickup_text, Woods_FeedingGrounds_SL_item) sense_pickup_search_closest(14644007)
     if (detect_unavailable || Woods.LaunchTree.ElementalOre == false) && string_contains(pickup_text, Woods_LaunchTree_ElementalOre_item) sense_pickup_search_closest(13053732)
     if (detect_unavailable || Woods.LaunchTree.PortalSL == false) && string_contains(pickup_text, Woods_LaunchTree_PortalSL_item) sense_pickup_search_closest(13313797)
-    if (detect_unavailable || Woods.LaunchTree == false) && string_contains(pickup_text, Woods_LaunchTree_item) sense_pickup_search_closest(13633815)
     if (detect_unavailable || Woods.LaunchTree.RightSL == false) && string_contains(pickup_text, Woods_LaunchTree_RightSL_item) sense_pickup_search_closest(13813767)
     if (detect_unavailable || Reach.BelowBaur.SL == false) && string_contains(pickup_text, Reach_BelowBaur_SL_item) sense_pickup_search_closest(-4004052)
     if (detect_unavailable || Reach.AboveBaur.SnaptrapSL == false) && string_contains(pickup_text, Reach_AboveBaur_SnaptrapSL_item) sense_pickup_search_closest(-4163967)
@@ -720,7 +706,6 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Reach.BaurIcefall.Ore == false) && string_contains(pickup_text, Reach_BaurIcefall_Ore_item) sense_pickup_search_closest(-4833974)
     if (detect_unavailable || Reach.BaurIcefall.SL == false) && string_contains(pickup_text, Reach_BaurIcefall_SL_item) sense_pickup_search_closest(-5003969)
     if (detect_unavailable || Reach.LeverDoor.CeilingSL == false) && string_contains(pickup_text, Reach_LeverDoor_CeilingSL_item) sense_pickup_search_closest(-3373999)
-    if (detect_unavailable || Reach.LupoMap == false) && string_contains(pickup_text, Reach_LupoMap_item) sense_pickup_search_closest(-2753996)
     if (detect_unavailable || Reach.JuggleSoup.MeltIceSL == false) && string_contains(pickup_text, Reach_JuggleSoup_MeltIceSL_item) sense_pickup_search_closest(-3504038)
     if (detect_unavailable || Reach.JuggleSoup.SnowSL == false) && string_contains(pickup_text, Reach_JuggleSoup_SnowSL_item) sense_pickup_search_closest(-3304051)
     if (detect_unavailable || Reach.GorlekFurnace.SL == false) && string_contains(pickup_text, Reach_GorlekFurnace_SL_item) sense_pickup_search_closest(-2824012)
@@ -740,7 +725,6 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Reach.TopKSRoom.SoupOre == false) && string_contains(pickup_text, Reach_TopKSRoom_SoupOre_item) sense_pickup_search_closest(-2023885)
     if (detect_unavailable || Reach.TopKSRoom.SwimSL == false) && string_contains(pickup_text, Reach_TopKSRoom_SwimSL_item) sense_pickup_search_closest(-2393920)
     if (detect_unavailable || Reach.GrenadeTree.MeltIceSL == false) && string_contains(pickup_text, Reach_GrenadeTree_MeltIceSL_item) sense_pickup_search_closest(-1723928)
-    if (detect_unavailable || Reach.GrenadeTree == false) && string_contains(pickup_text, Reach_GrenadeTree_item) sense_pickup_search_closest(-1063934)
     if (detect_unavailable || Reach.GrenadeTree.WellSL == false) && string_contains(pickup_text, Reach_GrenadeTree_WellSL_item) sense_pickup_search_closest(-713926)
     if (detect_unavailable || Reach.GrenadeTree.Ore == false) && string_contains(pickup_text, Reach_GrenadeTree_Ore_item) sense_pickup_search_closest(-863903)
     if (detect_unavailable || Reach.Seed == false) && string_contains(pickup_text, Reach_Seed_item) sense_pickup_search_closest(-1033857)
@@ -778,10 +762,8 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Depths.Shrine.SwimEF == false) && string_contains(pickup_text, Depths_Shrine_SwimEF_item) sense_pickup_search_closest(3244534)
     if (detect_unavailable || Depths.CombatShrine == false) && string_contains(pickup_text, Depths_CombatShrine_item) sense_pickup_search_closest(2124511)
     if (detect_unavailable || Depths.TrialStart.LF == false) && string_contains(pickup_text, Depths_TrialStart_LF_item) sense_pickup_search_closest(4964498)
-    if (detect_unavailable || Depths.LupoMap == false) && string_contains(pickup_text, Depths_LupoMap_item) sense_pickup_search_closest(6824576)
     if (detect_unavailable || Depths.TrialLoop.Shard == false) && string_contains(pickup_text, Depths_TrialLoop_Shard_item) sense_pickup_search_closest(5644570)
     if (detect_unavailable || Depths.SpiritTrial.Completed == false) && string_contains(pickup_text, Depths_SpiritTrial_Completed_item) sense_pickup_search_closest(4784517)
-    if (detect_unavailable || Depths.FlashTree == false) && string_contains(pickup_text, Depths_FlashTree_item) sense_pickup_search_closest(7764541)
     if (detect_unavailable || Depths.FlashTree.SL == false) && string_contains(pickup_text, Depths_FlashTree_SL_item) sense_pickup_search_closest(7984513)
     if (detect_unavailable || Pools.WellspringPath.CeilingSL == false) && string_contains(pickup_text, Pools_WellspringPath_CeilingSL_item) sense_pickup_search_closest(-8944137)
     if (detect_unavailable || Pools.WellspringPath.BreakWallEF == false) && string_contains(pickup_text, Pools_WellspringPath_BreakWallEF_item) sense_pickup_search_closest(-9244169)
@@ -802,7 +784,6 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Pools.WaterArena.LF == false) && string_contains(pickup_text, Pools_WaterArena_LF_item) sense_pickup_search_closest(-13654109)
     if (detect_unavailable || Pools.SpiritTrial.Completed == false) && string_contains(pickup_text, Pools_SpiritTrial_Completed_item) sense_pickup_search_closest(-14174126)
     if (detect_unavailable || Pools.TrialStart.Shard == false) && string_contains(pickup_text, Pools_TrialStart_Shard_item) sense_pickup_search_closest(-14414129)
-    if (detect_unavailable || Pools.LupoMap == false) && string_contains(pickup_text, Pools_LupoMap_item) sense_pickup_search_closest(-13914167)
     if (detect_unavailable || Pools.Lupo.SL == false) && string_contains(pickup_text, Pools_Lupo_SL_item) sense_pickup_search_closest(-14144154)
     if (detect_unavailable || Pools.Lupo.CrusherSL == false) && string_contains(pickup_text, Pools_Lupo_CrusherSL_item) sense_pickup_search_closest(-14304180)
     if (detect_unavailable || Pools.Seed == false) && string_contains(pickup_text, Pools_Seed_item) sense_pickup_search_closest(-15284140)
@@ -815,7 +796,6 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Pools.BubbleSpam.EF == false) && string_contains(pickup_text, Pools_BubbleSpam_EF_item) sense_pickup_search_closest(-16434002)
     if (detect_unavailable || Pools.BubbleSpam.LeftSL == false) && string_contains(pickup_text, Pools_BubbleSpam_LeftSL_item) sense_pickup_search_closest(-16454083)
     if (detect_unavailable || Pools.BubbleSpam.BreakWallSL == false) && string_contains(pickup_text, Pools_BubbleSpam_BreakWallSL_item) sense_pickup_search_closest(-15724076)
-    if (detect_unavailable || Pools.WaterDashTree == false) && string_contains(pickup_text, Pools_WaterDashTree_item) sense_pickup_search_closest(-14304082)
     if (detect_unavailable || Pools.WaterDashTree.CurrentSL == false) && string_contains(pickup_text, Pools_WaterDashTree_CurrentSL_item) sense_pickup_search_closest(-14684098)
     if (detect_unavailable || Pools.WaterDashTree.CeilingSL == false) && string_contains(pickup_text, Pools_WaterDashTree_CeilingSL_item) sense_pickup_search_closest(-14494036)
     if (detect_unavailable || Pools.WaterDashDrain.EF == false) && string_contains(pickup_text, Pools_WaterDashDrain_EF_item) sense_pickup_search_closest(-13894039)
@@ -841,8 +821,6 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Wastes.GrappleMuncherClimb.SL == false) && string_contains(pickup_text, Wastes_GrappleMuncherClimb_SL_item) sense_pickup_search_closest(17653921)
     if (detect_unavailable || Wastes.TrialToTreeTunnel.SL == false) && string_contains(pickup_text, Wastes_TrialToTreeTunnel_SL_item) sense_pickup_search_closest(16423944)
     if (detect_unavailable || Wastes.HandToHand.Mapstone == false) && string_contains(pickup_text, Wastes_HandToHand_Mapstone_item) sense_pickup_search_closest(16853923)
-    if (detect_unavailable || Wastes.LupoMap == false) && string_contains(pickup_text, Wastes_LupoMap_item) sense_pickup_search_closest(16473899)
-    if (detect_unavailable || Wastes.BurrowTree == false) && string_contains(pickup_text, Wastes_BurrowTree_item) sense_pickup_search_closest(15833930)
     if (detect_unavailable || Wastes.BurrowTree.SL == false) && string_contains(pickup_text, Wastes_BurrowTree_SL_item) sense_pickup_search_closest(16003953)
     if (detect_unavailable || Wastes.TreeToCentralTPArc.SandEF == false) && string_contains(pickup_text, Wastes_TreeToCentralTPArc_SandEF_item) sense_pickup_search_closest(17783873)
     if (detect_unavailable || Wastes.TreeToCentralTPArc.FloatingSL == false) && string_contains(pickup_text, Wastes_TreeToCentralTPArc_FloatingSL_item) sense_pickup_search_closest(18103883)
@@ -869,34 +847,15 @@ fun sense_pickup_search(pickup_text: String, detect_unavailable: Boolean){
     if (detect_unavailable || Willow.Entrance.SL == false) && string_contains(pickup_text, Willow_Entrance_SL_item) sense_pickup_search_closest(4693914)
     if (detect_unavailable || Willow.MossWheelsHeart.LF == false) && string_contains(pickup_text, Willow_MossWheelsHeart_LF_item) sense_pickup_search_closest(4103972)
     if (detect_unavailable || Willow.SecretPortal.Ore == false) && string_contains(pickup_text, Willow_SecretPortal_Ore_item) sense_pickup_search_closest(5573876)
-    if (detect_unavailable || Willow.LupoMap == false) && string_contains(pickup_text, Willow_LupoMap_item) sense_pickup_search_closest(4743859)
     if (detect_unavailable || Willow.RedirectHeart.SL == false) && string_contains(pickup_text, Willow_RedirectHeart_SL_item) sense_pickup_search_closest(6533780)
     if (detect_unavailable || Willow.WindHeart.SpinOre == false) && string_contains(pickup_text, Willow_WindHeart_SpinOre_item) sense_pickup_search_closest(3263810)
     if (detect_unavailable || Willow.TopHeart.LeftSL == false) && string_contains(pickup_text, Willow_TopHeart_LeftSL_item) sense_pickup_search_closest(4333639)
     if (detect_unavailable || Willow.TopHeart.RightSL == false) && string_contains(pickup_text, Willow_TopHeart_RightSL_item) sense_pickup_search_closest(5403655)
-    if (detect_unavailable || Shop.Twillen.Slot1 == false) && string_contains(pickup_text, Shop_Twillen_Slot1_item) sense_pickup_search_twillen()
-    if (detect_unavailable || Shop.Twillen.Slot2 == false) && string_contains(pickup_text, Shop_Twillen_Slot2_item) sense_pickup_search_twillen()
-    if (detect_unavailable || Shop.Twillen.Slot3 == false) && string_contains(pickup_text, Shop_Twillen_Slot3_item) sense_pickup_search_twillen()
-    if (detect_unavailable || Shop.Twillen.Slot4 == false) && string_contains(pickup_text, Shop_Twillen_Slot4_item) sense_pickup_search_twillen()
-    if (detect_unavailable || Shop.Twillen.Slot5 == false) && string_contains(pickup_text, Shop_Twillen_Slot5_item) sense_pickup_search_twillen()
-    if (detect_unavailable || Shop.Twillen.Slot6 == false) && string_contains(pickup_text, Shop_Twillen_Slot6_item) sense_pickup_search_twillen()
-    if (detect_unavailable || Shop.Twillen.Slot7 == false) && string_contains(pickup_text, Shop_Twillen_Slot7_item) sense_pickup_search_twillen()
-    if (detect_unavailable || Shop.Twillen.Slot8 == false) && string_contains(pickup_text, Shop_Twillen_Slot8_item) sense_pickup_search_twillen()
-    if (detect_unavailable || Shop.Opher.Slot1 == false) && string_contains(pickup_text, Shop_Opher_Slot1_item) sense_pickup_search_opher()
-    if (detect_unavailable || Shop.Opher.Slot2 == false) && string_contains(pickup_text, Shop_Opher_Slot2_item) sense_pickup_search_opher()
-    if (detect_unavailable || Shop.Opher.Slot3 == false) && string_contains(pickup_text, Shop_Opher_Slot3_item) sense_pickup_search_opher()
-    if (detect_unavailable || Shop.Opher.Slot4 == false) && string_contains(pickup_text, Shop_Opher_Slot4_item) sense_pickup_search_opher()
-    if (detect_unavailable || Shop.Opher.Slot5 == false) && string_contains(pickup_text, Shop_Opher_Slot5_item) sense_pickup_search_opher()
-    if (detect_unavailable || Shop.Opher.Slot6 == false) && string_contains(pickup_text, Shop_Opher_Slot6_item) sense_pickup_search_opher()
-    if (detect_unavailable || Shop.Opher.Slot7 == false) && string_contains(pickup_text, Shop_Opher_Slot7_item) sense_pickup_search_opher()
-    if (detect_unavailable || Shop.Opher.Slot8 == false) && string_contains(pickup_text, Shop_Opher_Slot8_item) sense_pickup_search_opher()
-    if (detect_unavailable || Shop.Opher.Slot9 == false) && string_contains(pickup_text, Shop_Opher_Slot9_item) sense_pickup_search_opher()
-    if (detect_unavailable || Shop.Opher.Slot10 == false) && string_contains(pickup_text, Shop_Opher_Slot10_item) sense_pickup_search_opher()
-    if (detect_unavailable || Shop.Opher.Slot11 == false) && string_contains(pickup_text, Shop_Opher_Slot11_item) sense_pickup_search_opher()
-    if (detect_unavailable || Shop.Opher.Slot12 == false) && string_contains(pickup_text, Shop_Opher_Slot12_item) sense_pickup_search_opher()
-    if (detect_unavailable || Shop.Lupo.Slot1 == false) && string_contains(pickup_text, Shop_Lupo_Slot1_item) sense_pickup_search_closest(-1734508)
-    if (detect_unavailable || Shop.Lupo.Slot2 == false) && string_contains(pickup_text, Shop_Lupo_Slot2_item) sense_pickup_search_closest(-1734508)
-    if (detect_unavailable || Shop.Lupo.Slot3 == false) && string_contains(pickup_text, Shop_Lupo_Slot3_item) sense_pickup_search_closest(-1734508)
+
+    sense_check_trees(pickup_text, detect_unavailable)
+    sense_check_twillen(pickup_text, detect_unavailable)
+    sense_check_opher(pickup_text, detect_unavailable)
+    sense_check_lupo(pickup_text, detect_unavailable)
 
     // ^(Shop)\.(Twillen)\.(Slot\d+).*$
     //     if (detect_unavailable || $1.$2.$3 == false) && string_contains(pickup_text, $1_$2_$3_item) sense_pickup_search_twillen()
@@ -921,14 +880,98 @@ fun sense_pickup_search_closest(candidate_xy: Integer){
     }
 }
 
+// FIXME once we can detect if other snippets are included
+!state(area_hints_included, Boolean)  // Uses actual skill names
+!state(key_hints_included, Boolean)  // Uses white or green for skills ("" / "$")
+// !state(knowledge_hints_included, Boolean)  // Does not place anything on pickups
+// !state(shrine_hints_included, Boolean)  // Does not place anything on pickups
+!state(tree_hints_included, Boolean)  // Uses white or green for skills ("" / "$")
+// !state(trial_hints_included, Boolean)  // Does not place anything on pickups
+on spawn {
+    // THIS IS VERY SKETCHY
+    store(area_hints_included, string_contains(" - ", Marsh_LupoMap_item))  // Detects "Marsh Skills - " and "Marsh TPs - ". No config for individual maps means it's applied to all of them.
+    store( key_hints_included, string_contains("Clean Water:", Shop_Opher_Slot11_item))  // U+00a0, not a space
+    store(tree_hints_included, string_contains("Regenerate: ", Marsh_RegenerateTree_item))  // U+00a0, not a space
+}
+
+fun sense_check_trees(pickup_text: String, detect_unavailable: Boolean){
+    // Do something about tree hints?
+    if (detect_unavailable || Marsh.AncestralLightTree == false) && string_contains(pickup_text, Marsh_AncestralLightTree_item) sense_pickup_search_closest(-8404488)
+    if (detect_unavailable || Marsh.RegenerateTree == false) && string_contains(pickup_text, Marsh_RegenerateTree_item) sense_pickup_search_closest(-5394406)
+    if (detect_unavailable || Marsh.SwordTree == false) && string_contains(pickup_text, Marsh_SwordTree_item) sense_pickup_search_closest(-2964483)
+    if (detect_unavailable || Marsh.DoubleJumpTree == false) && string_contains(pickup_text, Marsh_DoubleJumpTree_item) sense_pickup_search_closest(-5554551)
+    if (detect_unavailable || Marsh.BowTree == false) && string_contains(pickup_text, Marsh_BowTree_item) sense_pickup_search_closest(-4574267)
+    if (detect_unavailable || Hollow.DashTree == false) && string_contains(pickup_text, Hollow_DashTree_item) sense_pickup_search_closest(-694453)
+    if (detect_unavailable || Hollow.BashTree == false) && string_contains(pickup_text, Hollow_BashTree_item) sense_pickup_search_closest(-204326)
+    if (detect_unavailable || Glades.AncestralLightTree == false) && string_contains(pickup_text, Glades_AncestralLightTree_item) sense_pickup_search_closest(-3684158)
+    if (detect_unavailable || Wellspring.GrappleTree == false) && string_contains(pickup_text, Wellspring_GrappleTree_item) sense_pickup_search_closest(-13093905)
+    if (detect_unavailable || Woods.LaunchTree == false) && string_contains(pickup_text, Woods_LaunchTree_item) sense_pickup_search_closest(13633815)
+    if (detect_unavailable || Reach.GrenadeTree == false) && string_contains(pickup_text, Reach_GrenadeTree_item) sense_pickup_search_closest(-1063934)
+    if (detect_unavailable || Depths.FlashTree == false) && string_contains(pickup_text, Depths_FlashTree_item) sense_pickup_search_closest(7764541)
+    if (detect_unavailable || Pools.WaterDashTree == false) && string_contains(pickup_text, Pools_WaterDashTree_item) sense_pickup_search_closest(-14304082)
+    if (detect_unavailable || Wastes.BurrowTree == false) && string_contains(pickup_text, Wastes_BurrowTree_item) sense_pickup_search_closest(15833930)
+}
+
+fun sense_check_twillen(pickup_text: String, detect_unavailable: Boolean){
+    if (detect_unavailable || Shop.Twillen.Slot1 == false) && string_contains(pickup_text, Shop_Twillen_Slot1_item) sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot2 == false) && string_contains(pickup_text, Shop_Twillen_Slot2_item) sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot3 == false) && string_contains(pickup_text, Shop_Twillen_Slot3_item) sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot4 == false) && string_contains(pickup_text, Shop_Twillen_Slot4_item) sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot5 == false) && string_contains(pickup_text, Shop_Twillen_Slot5_item) sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot6 == false) && string_contains(pickup_text, Shop_Twillen_Slot6_item) sense_pickup_search_twillen()
+    if (detect_unavailable || Shop.Twillen.Slot7 == false) && string_contains(pickup_text, Shop_Twillen_Slot7_item) sense_pickup_search_twillen()
+    
+    // Key hints changes this slot
+    if key_hints_included == false && (detect_unavailable || Shop.Twillen.Slot8 == false) && string_contains(pickup_text, Shop_Twillen_Slot8_item) sense_pickup_search_twillen()
+}
 fun sense_pickup_search_twillen(){
     sense_pickup_search_closest(-2814238)
     sense_pickup_search_closest(-4104161)
+}
+
+fun sense_check_opher(pickup_text: String, detect_unavailable: Boolean){
+    if (detect_unavailable || Shop.Opher.Slot1 == false) && string_contains(pickup_text, Shop_Opher_Slot1_item) sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot2 == false) && string_contains(pickup_text, Shop_Opher_Slot2_item) sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot3 == false) && string_contains(pickup_text, Shop_Opher_Slot3_item) sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot4 == false) && string_contains(pickup_text, Shop_Opher_Slot4_item) sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot5 == false) && string_contains(pickup_text, Shop_Opher_Slot5_item) sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot6 == false) && string_contains(pickup_text, Shop_Opher_Slot6_item) sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot7 == false) && string_contains(pickup_text, Shop_Opher_Slot7_item) sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot8 == false) && string_contains(pickup_text, Shop_Opher_Slot8_item) sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot9 == false) && string_contains(pickup_text, Shop_Opher_Slot9_item) sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot10 == false) && string_contains(pickup_text, Shop_Opher_Slot10_item) sense_pickup_search_opher()
+    if (detect_unavailable || Shop.Opher.Slot12 == false) && string_contains(pickup_text, Shop_Opher_Slot12_item) sense_pickup_search_opher()
+
+    // Key hints changes this slot
+    if key_hints_included == false && (detect_unavailable || Shop.Opher.Slot11 == false) && string_contains(pickup_text, Shop_Opher_Slot11_item) sense_pickup_search_opher()
 }
 fun sense_pickup_search_opher(){
     sense_pickup_search_closest(-2034147)
     sense_pickup_search_closest(-5974292)
     sense_pickup_search_closest(-12593677)
+}
+
+fun sense_check_lupo(pickup_text: String, detect_unavailable: Boolean){
+    // Area hints changes these slots
+    if area_hints_included == false {
+        if (detect_unavailable || Shop.Lupo.Slot1 == false) && string_contains(pickup_text, Shop_Lupo_Slot1_item) sense_pickup_search_closest(-1734508)
+        if (detect_unavailable || Shop.Lupo.Slot2 == false) && string_contains(pickup_text, Shop_Lupo_Slot2_item) sense_pickup_search_closest(-1734508)
+    }
+    // Key hints changes this slot
+    if key_hints_included == false && (detect_unavailable || Shop.Lupo.Slot3 == false) && string_contains(pickup_text, Shop_Lupo_Slot3_item) sense_pickup_search_closest(-1734508)
+
+    // Area hints changes these slots
+    if area_hints_included == false {
+        if (detect_unavailable || Marsh.LupoMap == false) && string_contains(pickup_text, Marsh_LupoMap_item) sense_pickup_search_closest(-5894348)
+        if (detect_unavailable || Burrows.LupoMap == false) && string_contains(pickup_text, Burrows_LupoMap_item) sense_pickup_search_closest(-8704555)
+        if (detect_unavailable || Hollow.LupoMap == false) && string_contains(pickup_text, Hollow_LupoMap_item) sense_pickup_search_closest(-1464321)
+        if (detect_unavailable || Wellspring.LupoMap == false) && string_contains(pickup_text, Wellspring_LupoMap_item) sense_pickup_search_closest(-11903861)
+        if (detect_unavailable || Reach.LupoMap == false) && string_contains(pickup_text, Reach_LupoMap_item) sense_pickup_search_closest(-2753996)
+        if (detect_unavailable || Depths.LupoMap == false) && string_contains(pickup_text, Depths_LupoMap_item) sense_pickup_search_closest(6824576)
+        if (detect_unavailable || Pools.LupoMap == false) && string_contains(pickup_text, Pools_LupoMap_item) sense_pickup_search_closest(-13914167)
+        if (detect_unavailable || Wastes.LupoMap == false) && string_contains(pickup_text, Wastes_LupoMap_item) sense_pickup_search_closest(16473899)
+        if (detect_unavailable || Willow.LupoMap == false) && string_contains(pickup_text, Willow_LupoMap_item) sense_pickup_search_closest(4743859)
+    }
 }
 
 

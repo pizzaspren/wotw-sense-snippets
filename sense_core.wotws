@@ -995,11 +995,11 @@ fun sense_check_lupo(pickup_text: String, detect_unavailable: Boolean){
             if get_float(math_return) > get_float("sense_search_closest_dist") {
                 item_message("@Sense debug@ - $sense_pickup_search_closest$" +
                             "\nx: " + to_string(get_float(sense_pickup_x)) +
-                            "\ny: " + to_string(get_float(sense_pickup_y)) +
+                            "  y: " + to_string(get_float(sense_pickup_y)) +
                             "\nplayer.positionX: " + player.positionX +
-                            "\nplayer.positionY: " + player.positionY +
+                            "  player.positionY: " + player.positionY +
                             "\ndx: " + to_string(get_float(sense_pickup_x) - player.positionX) +
-                            "\ndy: " + to_string(get_float(sense_pickup_y) - player.positionY) +
+                            "  dy: " + to_string(get_float(sense_pickup_y) - player.positionY) +
                             "\nhypot: " + get_float(math_return) +
                             "\nclosest: " + to_string(get_float("sense_search_closest_dist")))
             }

@@ -34,7 +34,7 @@ on sense_timer > sense_timer_delay if is_in_rectangle(-2100, -4700, 2500, -3300)
 
 on tick {
     sense_tick()
-    if get_float(sense_shortest_distance) > sense_distance        set_message_text(sense_message, "Sense: Nothing")
+    if get_float(sense_shortest_distance) > sense_distance        set_message_text(sense_message, "")
     if get_float(sense_shortest_distance) / sense_distance <=1    set_message_text(sense_message, "Sense: *Far*")
     if get_float(sense_shortest_distance) / sense_distance < 0.5  set_message_text(sense_message, "Sense: $Nearby$")
     if get_float(sense_shortest_distance) / sense_distance < 0.3  set_message_text(sense_message, "Sense: #Close#")
